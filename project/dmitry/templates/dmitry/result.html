@@ -7,7 +7,7 @@
     <div class="row justify-content-center">
         <div class="col-lg-10">
             <div class="card shadow-sm">
-                <div class="card-header bg-primary text-white">
+                <div class="card-header bg-success text-white">
                     <h4 class="mb-0">Scan Result for: {{ target }}</h4>
                     <small class="text-light">Options: {{ options }}</small>
                 </div>
@@ -15,11 +15,7 @@
                     <pre id="scanOutput" style="white-space: pre-wrap;">{{ result }}</pre>
                 </div>
                 <div class="card-footer d-flex justify-content-between align-items-center">
-                    {% if 'nmap' in request.path %}
-                        <a href="{% url 'nmap_scan' %}" class="btn btn-outline-secondary">← Back to Nmap Scan</a>
-                    {% else %}
-                        <a href="{% url 'dmitry_scan' %}" class="btn btn-outline-secondary">← Back to Dmitry Scan</a>
-                    {% endif %}
+                    <a href="{% url 'dmitry_scan' %}" class="btn btn-outline-secondary">← Back to Dmitry Scan</a>
                     <button class="btn btn-success" onclick="downloadResult()">Download Result</button>
                 </div>
             </div>
@@ -30,7 +26,7 @@
 <script>
     function downloadResult() {
         const scanText = document.getElementById("scanOutput").innerText;
-        const filename = prompt("Enter file name (without extension):", "scan_result");
+        const filename = prompt("Enter file name (without extension):", "dmitry_scan");
         if (!filename) return;
 
         const blob = new Blob([scanText], { type: "text/plain" });

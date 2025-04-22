@@ -1,0 +1,21 @@
+Nmap Scan Report for 192.168.1.1
+Options: -O
+
+Starting Nmap 7.95 ( https://nmap.org ) at 2025-04-21 20:12 IST
+Nmap scan report for RTK_GW.bbrouter (192.168.1.1)
+Host is up (0.044s latency).
+Not shown: 996 closed tcp ports (reset)
+PORT    STATE    SERVICE
+23/tcp  filtered telnet
+53/tcp  open     domain
+80/tcp  open     http
+443/tcp open     https
+MAC Address: D0:1E:1D:46:D2:E1 (SaiNXT Technologies LLP)
+Device type: general purpose
+Running: Linux 3.X|4.X
+OS CPE: cpe:/o:linux:linux_kernel:3 cpe:/o:linux:linux_kernel:4
+OS details: Linux 3.2 - 4.14
+Network Distance: 1 hop
+
+OS detection performed. Please report any incorrect results at https://nmap.org/submit/ .
+Nmap done: 1 IP address (1 host up) scanned in 3.57 seconds

@@ -23,4 +23,5 @@ urlpatterns = [
     path('admin/', admin.site.urls), 
     path('', views.home),
     path('nmap/', include('nmap.urls')),
+    path('dmitry/', include('dmitry.urls')),
 ]
