@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+{% block title %} Brute Force Attack {% endblock title %}
+
+{% block content %}
+<div class="container mt-5 mb-5">
+    <h2 class="text-center mb-4">Brute Force Attack Simulator</h2>
+    <div class="row justify-content-center">
+        <div class="col-md-10">
+            <form method="post" enctype="multipart/form-data" class="p-4 shadow rounded bg-light">
+                {% csrf_token %}
+                <div class="mb-3">
+                    <label for="id_target_ip" class="form-label">Target IP</label>
+                    {{ form.target_ip }}
+                </div>
+                <div class="mb-3">
+                    <label for="id_username_wordlist" class="form-label">Upload Username Wordlist</label>
+                    {{ form.username_wordlist }}
+                </div>
+                <div class="mb-3">
+                    <label for="id_password_wordlist" class="form-label">Upload Password Wordlist</label>
+                    {{ form.password_wordlist }}
+                </div>
+                <div class="d-grid">
+                    <button type="submit" class="btn btn-danger">Start Brute Force</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock content %}

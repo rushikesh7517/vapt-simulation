@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+
+{% block title %} Brute Force Result {% endblock title %}
+
+{% block content %}
+<div class="container mt-5 mb-5">
+    <div class="row justify-content-center">
+        <div class="col-lg-10">
+            <div class="card shadow-sm">
+                <div class="card-header bg-danger text-white">
+                    <h4 class="mb-0">Brute Force Result for: {{ target_ip }}</h4>
+                    <small class="text-light">Username: {{ username }}</small>
+                </div>
+                <div class="card-body bg-light">
+                    {% if matched %}
+                        <h5 class="text-success">✅ Valid credentials found:</h5>
+                        <pre class="border p-2 bg-white rounded">{{ matched }}</pre>
+                    {% else %}
+                        <h5 class="text-warning">⚠️ No valid credentials found.</h5>
+                    {% endif %}
+                    <hr>
+                    <h6 class="text-muted">Full Output:</h6>
+                    <pre id="scanOutput" style="white-space: pre-wrap;">{{ result }}</pre>
+                </div>
+                <div class="card-footer d-flex justify-content-between align-items-center">
+                    <a href="{% url 'bruteforce' %}" class="btn btn-outline-secondary">← Back to Brute Force</a>
+                    <button class="btn btn-danger" onclick="downloadResult()">Download Result</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    function downloadResult() {
+        const scanText = document.getElementById("scanOutput").innerText;
+        const filename = prompt("Enter file name (without extension):", "brute_result");
+        if (!filename) return;
+
+        const blob = new Blob([scanText], { type: "text/plain" });
+        const url = URL.createObjectURL(blob);
+
+        const a = document.createElement("a");
+        a.href = url;
+        a.download = filename + ".txt";
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+        URL.revokeObjectURL(url);
+    }
+</script>
+{% endblock content %}

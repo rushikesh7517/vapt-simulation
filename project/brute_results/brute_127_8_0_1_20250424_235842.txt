@@ -1,0 +1,11 @@
+Target IP: 127.8.0.1
+Userlist: /home/rushi/Desktop/vapt/project/temp_wordlists/userlist_rockyou.txt
+Passlist: /home/rushi/Desktop/vapt/project/temp_wordlists/passlist_rockyou.txt
+
+Hydra v9.5 (c) 2023 by van Hauser/THC & David Maciejak - Please do not use in military or secret service organizations, or for illegal purposes (this is non-binding, these *** ignore laws and ethics anyway).
+
+Hydra (https://github.com/vanhauser-thc/thc-hydra) starting at 2025-04-24 23:58:35
+[WARNING] Many SSH configurations limit the number of parallel tasks, it is recommended to reduce the tasks: use -t 4
+[DATA] max 16 tasks per 1 server, overall 16 tasks, 205761782671201 login tries (l:14344399/p:14344399), ~12860111416951 tries per task
+[DATA] attacking ssh://127.8.0.1:22/
+[ERROR] could not connect to ssh://127.8.0.1:22 - Connection refused

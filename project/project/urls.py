@@ -24,4 +24,5 @@ urlpatterns = [
     path('', views.home),
     path('nmap/', include('nmap.urls')),
     path('dmitry/', include('dmitry.urls')),
+    path('bruteforce/', include('bruteforce.urls')),
 ]
