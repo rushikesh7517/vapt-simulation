@@ -1,0 +1,66 @@
+{% extends "base.html" %}
+
+{% block title %} Welcome to VAPT Toolkit {% endblock title %}
+
+{% block content %}
+
+<!-- Hero Section -->
+<section class="bg-dark text-white text-center p-5 animate__animated animate__fadeIn">
+    <div class="container">
+        <h1 class="display-4 mb-3">Welcome to <span class="text-warning">VAPT Toolkit</span> 🚀</h1>
+        <p class="lead">Your All-in-One Ethical Hacking and Vulnerability Assessment Platform.</p>
+
+        <div class="mt-4">
+            <a href="{% url 'login' %}" class="btn btn-warning btn-lg me-3">Login</a>
+            <a href="{% url 'register' %}" class="btn btn-outline-light btn-lg">Register</a>
+        </div>
+    </div>
+</section>
+
+<!-- About Section -->
+<section class="container py-5 text-center">
+    <h2 class="animate__animated animate__fadeInUp">About VAPT Toolkit</h2>
+    <p class="lead mt-3">VAPT Toolkit allows you to practice professional scanning, information gathering, and attack simulation techniques safely. Built specially for cybersecurity students and ethical hackers.</p>
+</section>
+
+<!-- Features Section -->
+<section class="bg-light py-5">
+    <div class="container">
+        <h2 class="text-center animate__animated animate__fadeInUp">What You Can Do</h2>
+
+        <div class="row g-4 mt-4 text-center">
+            <div class="col-md-3 animate__animated animate__zoomIn">
+                <div class="card shadow-sm p-3">
+                    <h5 class="card-title">Nmap Scanner</h5>
+                    <p>Network port scanning and service detection.</p>
+                </div>
+            </div>
+            <div class="col-md-3 animate__animated animate__zoomIn">
+                <div class="card shadow-sm p-3">
+                    <h5 class="card-title">Dmitry Footprinting</h5>
+                    <p>Domain information and subdomain gathering.</p>
+                </div>
+            </div>
+            <div class="col-md-3 animate__animated animate__zoomIn">
+                <div class="card shadow-sm p-3">
+                    <h5 class="card-title">Brute Force Attack</h5>
+                    <p>SSH Brute Force simulation using uploaded wordlists.</p>
+                </div>
+            </div>
+            <div class="col-md-3 animate__animated animate__zoomIn">
+                <div class="card shadow-sm p-3">
+                    <h5 class="card-title">theHarvester OSINT</h5>
+                    <p>Email and domain harvesting from public sources.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Final Call to Action -->
+<section class="container text-center py-5 animate__animated animate__fadeInUp">
+    <h2>Start Your Ethical Hacking Journey Today!</h2>
+    <a href="{% url 'login' %}" class="btn btn-success btn-lg mt-4">Login Now</a>
+</section>
+
+{% endblock content %}

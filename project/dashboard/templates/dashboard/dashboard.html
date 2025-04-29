@@ -1,0 +1,69 @@
+{% extends "base.html" %}
+
+{% block title %} Dashboard | VAPT Toolkit {% endblock title %}
+
+{% block content %}
+<div class="container mt-5 mb-5">
+    <h2 class="text-center mb-4 animate__animated animate__fadeInDown">Welcome to Your Dashboard 🚀</h2>
+
+    <div class="row g-4 justify-content-center">
+        
+        <!-- Nmap Card -->
+        <div class="col-md-3">
+            <div class="card shadow-sm h-100 text-center animate__animated animate__zoomIn" style="transition: transform 0.3s;">
+                <div class="card-body">
+                    <i class="bi bi-router-fill display-4 text-primary mb-3"></i>
+                    <h5 class="card-title">Nmap Scanner</h5>
+                    <p class="card-text small">Scan networks and discover services running on open ports.</p>
+                    <a href="{% url 'nmap_scan' %}" class="btn btn-primary btn-sm mt-2">Launch Nmap</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Dmitry Card -->
+        <div class="col-md-3">
+            <div class="card shadow-sm h-100 text-center animate__animated animate__zoomIn animate__delay-1s" style="transition: transform 0.3s;">
+                <div class="card-body">
+                    <i class="bi bi-search display-4 text-success mb-3"></i>
+                    <h5 class="card-title">Dmitry Footprinting</h5>
+                    <p class="card-text small">Gather domain information including subdomains and emails.</p>
+                    <a href="{% url 'dmitry_scan' %}" class="btn btn-success btn-sm mt-2">Launch Dmitry</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Brute Force Card -->
+        <div class="col-md-3">
+            <div class="card shadow-sm h-100 text-center animate__animated animate__zoomIn animate__delay-2s" style="transition: transform 0.3s;">
+                <div class="card-body">
+                    <i class="bi bi-shield-lock-fill display-4 text-danger mb-3"></i>
+                    <h5 class="card-title">Brute Force Attack</h5>
+                    <p class="card-text small">Simulate brute force attacks using custom wordlists.</p>
+                    <a href="{% url 'bruteforce' %}" class="btn btn-danger btn-sm mt-2">Start Brute Force</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- theHarvester Card -->
+        <div class="col-md-3">
+            <div class="card shadow-sm h-100 text-center animate__animated animate__zoomIn animate__delay-3s" style="transition: transform 0.3s;">
+                <div class="card-body">
+                    <i class="bi bi-globe2 display-4 text-info mb-3"></i>
+                    <h5 class="card-title">theHarvester OSINT</h5>
+                    <p class="card-text small">Harvest emails and domains from public sources easily.</p>
+                    <a href="{% url 'harvester_scan' %}" class="btn btn-info btn-sm mt-2">Start OSINT</a>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<!-- Custom hover effect -->
+<style>
+.card:hover {
+    transform: translateY(-10px);
+}
+</style>
+
+{% endblock content %}

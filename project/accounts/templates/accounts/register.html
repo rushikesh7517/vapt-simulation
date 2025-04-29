@@ -1,0 +1,66 @@
+{% extends "base.html" %}
+{% load static %}  {% block title %}Register{% endblock title %}
+
+{% block content %}
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-12 col-md-8 col-lg-6">
+            <div class="card shadow rounded">
+                <div class="card-body p-4">
+                    <h2 class="text-center mb-4 text-purple">
+                        <i class="fas fa-user-plus"></i> Register
+                    </h2>
+
+                    <form method="post">
+                        {% csrf_token %}
+                        {% for message in messages %}
+                            <div class="alert alert-warning">{{ message }}</div>
+                        {% endfor %}
+
+                        <div class="mb-3 input-group">
+                            <span class="input-group-text text-purple">
+                                <i class="fas fa-user"></i>
+                            </span>
+                            <input type="text" name="username" class="form-control" placeholder="Username" required>
+                        </div>
+
+                        <div class="mb-3 input-group">
+                            <span class="input-group-text text-purple">
+                                <i class="fas fa-envelope"></i>
+                            </span>
+                            <input type="email" name="email" class="form-control" placeholder="Email Address" required>
+                        </div>
+
+                        <div class="mb-3 input-group">
+                            <span class="input-group-text text-purple">
+                                <i class="fas fa-lock"></i>
+                            </span>
+                            <input type="password" name="password" class="form-control" placeholder="Password" required>
+                        </div>
+
+                        <div class="mb-3 input-group">
+                            <span class="input-group-text text-purple">
+                                <i class="fas fa-lock"></i>
+                            </span>
+                            <input type="password" name="confirm_password" class="form-control" placeholder="Confirm Password" required>
+                        </div>
+
+                        <div class="d-grid gap-2">
+                            <button type="submit" class="btn btn-purple">
+                                <i class="fas fa-user-check"></i> Register
+                            </button>
+                        </div>
+
+                        <div class="text-center mt-3">
+                            <p>
+                                Already have an account?
+                                <a href="{% url 'login' %}" class="text-purple">Login here</a>
+                            </p>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}

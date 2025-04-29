@@ -1,0 +1,27 @@
+<footer class="text-center animate__animated animate__fadeInUp">
+  <div class="container">
+      <small>© 2025 VAPT Toolkit | Developed by <strong>Rushikesh Gilbile</strong> | 
+      <a href="{% url 'login' %}">Login</a> | 
+      <a href="{% url 'register' %}">Register</a> | 
+      <a href="#" data-bs-toggle="modal" data-bs-target="#aboutModal">About</a></small>
+  </div>
+
+  <!-- About Us Modal -->
+  <div class="modal fade" id="aboutModal" tabindex="-1" aria-labelledby="aboutModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content shadow">
+        <div class="modal-header bg-primary text-white">
+          <h5 class="modal-title" id="aboutModalLabel">About VAPT Toolkit</h5>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <p><b>VAPT Toolkit</b> is a vulnerability assessment and penetration testing simulation platform, designed and developed by <strong>Rushikesh Rajaram Gilbile</strong>. It enables ethical hacking practice with modules like Nmap scanning, Dmitry footprinting, and Brute Force attack simulation.</p>
+          <p>Built for educational and ethical hacking purposes only. 🚀</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>

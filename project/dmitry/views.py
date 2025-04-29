@@ -4,6 +4,15 @@ import subprocess
 import os
 from django.conf import settings
 from datetime import datetime
+
+
+from django.contrib.auth.decorators import login_required
+
+@login_required(login_url='login')
+def your_scanner_view(request):
+    ...
+
+
 def dmitry_scan_view(request):
     form = DmitryScanForm()
     if request.method == 'POST':

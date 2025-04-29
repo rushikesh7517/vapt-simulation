@@ -3,6 +3,15 @@ import subprocess, os
 from datetime import datetime
 from django.conf import settings
 from django.shortcuts import render
+from django.contrib.auth.decorators import login_required
+
+from django.contrib.auth.decorators import login_required
+
+@login_required(login_url='login')
+def your_scanner_view(request):
+    ...
+
+
 
 def brute_force_view(request):
     form = BruteForceForm()

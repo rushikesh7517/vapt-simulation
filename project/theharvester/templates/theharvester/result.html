@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+
+{% block title %} Harvest Result {% endblock title %}
+
+{% block content %}
+<div class="container mt-5">
+    <h2 class="text-center">Results for {{ target }} via {{ source|title }}</h2>
+
+    <div class="card shadow-sm p-4 bg-light mt-4">
+        <pre>{{ result }}</pre>
+    </div>
+
+    <div class="d-flex justify-content-between mt-3">
+        <a href="{% url 'harvester_scan' %}" class="btn btn-secondary">← Back</a>
+        <button class="btn btn-success" onclick="downloadResult()">Download Result</button>
+    </div>
+</div>
+
+<script>
+function downloadResult() {
+    const text = document.querySelector('pre').innerText;
+    const filename = prompt("Enter filename:", "harvest_result");
+    if (!filename) return;
+
+    const blob = new Blob([text], { type: 'text/plain' });
+    const link = document.createElement('a');
+    link.href = URL.createObjectURL(blob);
+    link.download = filename + ".txt";
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+}
+</script>
+{% endblock content %}

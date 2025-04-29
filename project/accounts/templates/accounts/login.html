@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+{% load static %}  {% block title %}Login{% endblock title %}
+
+{% block content %}
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-12 col-md-8 col-lg-6">
+            <div class="card shadow rounded">
+                <div class="card-body p-4">
+                    <h2 class="text-center mb-4 text-purple">
+                        <i class="fas fa-sign-in-alt"></i> Login
+                    </h2>
+
+                    <form method="post">
+                        {% csrf_token %}
+                        {% for message in messages %}
+                            <div class="alert alert-warning">{{ message }}</div>
+                        {% endfor %}
+
+                        <div class="mb-3 input-group">
+                            <span class="input-group-text text-purple">
+                                <i class="fas fa-user"></i>
+                            </span>
+                            <input type="text" name="username" class="form-control" placeholder="Username" required>
+                        </div>
+
+                        <div class="mb-3 input-group">
+                            <span class="input-group-text text-purple">
+                                <i class="fas fa-lock"></i>
+                            </span>
+                            <input type="password" name="password" class="form-control" placeholder="Password" required>
+                        </div>
+
+                        <div class="mb-3 form-check">
+                            <input type="checkbox" class="form-check-input" id="rememberMe">
+                            <label class="form-check-label" for="rememberMe">Remember Me</label>
+                        </div>
+
+                        <div class="d-grid gap-2">
+                            <button type="submit" class="btn btn-purple">
+                                <i class="fas fa-arrow-right-to-bracket"></i> Login
+                            </button>
+                        </div>
+
+                        <div class="text-center mt-3">
+                            <a href="#" class="text-muted">Forgot Password?</a>
+                            <p class="mt-2">
+                                Don't have an account?
+                                <a href="{% url 'register' %}" class="text-purple">Register here</a>
+                            </p>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}

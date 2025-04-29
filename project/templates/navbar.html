@@ -1,0 +1,46 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow-sm">
+	<div class="container-fluid">
+	  <a class="navbar-brand animate__animated animate__fadeInLeft" href="{% url 'onboarding' %}">VAPT Toolkit</a>
+	  <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+		<span class="navbar-toggler-icon"></span>
+	  </button>
+  
+	  <div class="collapse navbar-collapse animate__animated animate__fadeInRight" id="navbarNav">
+		<ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+  
+		  {% if user.is_authenticated %}
+			<!-- User Logged In Navbar -->
+			<li class="nav-item">
+			  <a class="nav-link nav-btn" href="{% url 'dashboard' %}">Dashboard</a>
+			</li>
+			
+			<!-- Welcome Username -->
+			<li class="nav-item d-flex align-items-center mx-2">
+			  <span class="text-white small">
+				<i class="bi bi-person-circle"></i> {{ request.user.username|title }}
+			  </span>
+			</li>
+  
+			<!-- Logout Button -->
+			<li class="nav-item">
+			  <a class="nav-link nav-btn text-danger" href="{% url 'logout' %}">Logout</a>
+			</li>
+  
+		  {% else %}
+			<!-- User Not Logged In Navbar -->
+			<li class="nav-item">
+			  <a class="nav-link nav-btn" href="{% url 'onboarding' %}">Home</a>
+			</li>
+			<li class="nav-item">
+			  <a class="nav-link nav-btn" href="{% url 'login' %}">Login</a>
+			</li>
+			<li class="nav-item">
+			  <a class="nav-link nav-btn" href="{% url 'register' %}">Register</a>
+			</li>
+		  {% endif %}
+  
+		</ul>
+	  </div>
+	</div>
+  </nav>
+  

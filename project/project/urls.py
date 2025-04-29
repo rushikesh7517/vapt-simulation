@@ -20,9 +20,12 @@ from django.urls import path, include
 from . import views
 
 urlpatterns = [
-    path('admin/', admin.site.urls), 
-    path('', views.home),
-    path('nmap/', include('nmap.urls')),
-    path('dmitry/', include('dmitry.urls')),
-    path('bruteforce/', include('bruteforce.urls')),
+    path('admin/', admin.site.urls),
+    path('', include('dashboard.urls')),         # Onboarding and dashboard
+    path('accounts/', include('accounts.urls')), # Login, Register, Logout
+    path('nmap/', include('nmap.urls')),          # Nmap Scanner
+    path('dmitry/', include('dmitry.urls')),      # Dmitry Scanner
+    path('bruteforce/', include('bruteforce.urls')), # Brute Force Scanner
+    path('theharvester/', include('theharvester.urls')), # theHarvester
 ]
+
