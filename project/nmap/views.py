@@ -2,17 +2,11 @@
 from django.shortcuts import render
 from .forms import NmapScanForm
 import subprocess
-import os
-from django.conf import settings
-from datetime import datetime
-
 from django.contrib.auth.decorators import login_required
 
 @login_required(login_url='login')
 def your_scanner_view(request):
     ...
-
-
 
 def nmap_scan_view(request):
     form = NmapScanForm()
@@ -28,25 +22,11 @@ def nmap_scan_view(request):
             except subprocess.CalledProcessError as e:
                 result = e.output
 
-            # Save result to file
-            scans_dir = os.path.join(settings.BASE_DIR, 'scans')
-            os.makedirs(scans_dir, exist_ok=True)
-
-            timestamp = datetime.now().strftime('%Y%m%d_%H%M%S')
-            safe_target = target.replace('.', '_').replace(':', '_').replace('/', '_')
-            filename = f"nmap_{safe_target}_{timestamp}.txt"
-            filepath = os.path.join(scans_dir, filename)
-
-            with open(filepath, 'w') as f:
-                f.write(f"Nmap Scan Report for {target}\n")
-                f.write(f"Options: {' '.join(options)}\n\n")
-                f.write(result)
-
+            # No file saving - just pass results to the template
             context = {
                 'target': target,
                 'options': ' '.join(options),
-                'result': result,
-                'file_path': filename
+                'result': result
             }
             return render(request, 'nmap/result.html', context)
 

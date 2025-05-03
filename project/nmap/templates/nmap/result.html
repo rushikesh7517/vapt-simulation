@@ -6,21 +6,21 @@
 <div class="container mt-5 mb-5">
     <div class="row justify-content-center">
         <div class="col-lg-10">
-            <div class="card shadow-sm">
+            <div class="card shadow">
                 <div class="card-header bg-primary text-white">
-                    <h4 class="mb-0">Scan Result for: {{ target }}</h4>
-                    <small class="text-light">Options: {{ options }}</small>
+                    <h4 class="mb-0 fw-bold">Scan Result for: {{ target }}</h4>
+                    <small class="text-white">Options: {{ options }}</small>
                 </div>
-                <div class="card-body bg-light">
-                    <pre id="scanOutput" style="white-space: pre-wrap;">{{ result }}</pre>
+                <div class="card-body bg-white">
+                    <pre id="scanOutput" style="white-space: pre-wrap; color: #212529; font-size: 1rem;">{{ result }}</pre>
                 </div>
-                <div class="card-footer d-flex justify-content-between align-items-center">
+                <div class="card-footer d-flex justify-content-between align-items-center bg-light">
                     {% if 'nmap' in request.path %}
-                        <a href="{% url 'nmap_scan' %}" class="btn btn-outline-secondary">← Back to Nmap Scan</a>
+                        <a href="{% url 'nmap_scan' %}" class="btn btn-outline-primary btn-lg">← Back to Nmap Scan</a>
                     {% else %}
-                        <a href="{% url 'dmitry_scan' %}" class="btn btn-outline-secondary">← Back to Dmitry Scan</a>
+                        <a href="{% url 'dmitry_scan' %}" class="btn btn-outline-primary btn-lg">← Back to Dmitry Scan</a>
                     {% endif %}
-                    <button class="btn btn-success" onclick="downloadResult()">Download Result</button>
+                    <button class="btn btn-success btn-lg" onclick="downloadResult()">Download Result</button>
                 </div>
             </div>
         </div>

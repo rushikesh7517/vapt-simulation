@@ -1,58 +1,106 @@
 {% extends "base.html" %}
-{% load static %}  {% block title %}Login{% endblock title %}
+{% block title %} Secure Login | VAPT Toolkit {% endblock title %}
 
 {% block content %}
-<div class="container mt-5">
-    <div class="row justify-content-center">
-        <div class="col-12 col-md-8 col-lg-6">
-            <div class="card shadow rounded">
-                <div class="card-body p-4">
-                    <h2 class="text-center mb-4 text-purple">
-                        <i class="fas fa-sign-in-alt"></i> Login
-                    </h2>
-
-                    <form method="post">
-                        {% csrf_token %}
-                        {% for message in messages %}
-                            <div class="alert alert-warning">{{ message }}</div>
-                        {% endfor %}
-
-                        <div class="mb-3 input-group">
-                            <span class="input-group-text text-purple">
-                                <i class="fas fa-user"></i>
-                            </span>
-                            <input type="text" name="username" class="form-control" placeholder="Username" required>
-                        </div>
-
-                        <div class="mb-3 input-group">
-                            <span class="input-group-text text-purple">
-                                <i class="fas fa-lock"></i>
-                            </span>
-                            <input type="password" name="password" class="form-control" placeholder="Password" required>
-                        </div>
-
-                        <div class="mb-3 form-check">
-                            <input type="checkbox" class="form-check-input" id="rememberMe">
-                            <label class="form-check-label" for="rememberMe">Remember Me</label>
-                        </div>
-
-                        <div class="d-grid gap-2">
-                            <button type="submit" class="btn btn-purple">
-                                <i class="fas fa-arrow-right-to-bracket"></i> Login
-                            </button>
-                        </div>
-
-                        <div class="text-center mt-3">
-                            <a href="#" class="text-muted">Forgot Password?</a>
-                            <p class="mt-2">
-                                Don't have an account?
-                                <a href="{% url 'register' %}" class="text-purple">Register here</a>
-                            </p>
-                        </div>
-                    </form>
-                </div>
-            </div>
+<div class="container d-flex justify-content-center align-items-center" style="min-height: 80vh;">
+  <div class="col-md-6 col-lg-5">
+    <div class="card shadow-lg p-4 animate__animated animate__fadeIn"
+          style="background-color: #0c0e14; border: 1px solid #4f46e5; border-radius: 1rem;">
+      
+      <!-- Heading with updated colors -->
+      <h2 class="text-center mb-3" style="letter-spacing: 2px;">
+        <span style="color: #4f46e5;">Login</span> 
+      </h2>
+      
+      <div class="text-center mb-3">
+        <i class="bi bi-shield-lock-fill" style="font-size: 2.5rem; color: #4f46e5;"></i>
+      </div>
+      
+      <!-- Security Banner 
+      <div class="alert alert-dark border-info mb-3" style="background-color: #111827; border-left: 4px solid #4f46e5;">
+        <div class="d-flex align-items-center">
+          <i class="bi bi-shield-check me-2" style="color: #10b981;"></i>
+          <small style="color: #94a3b8;">Secured with advanced encryption | <span style="color: #10b981;">HTTPS</span> protected</small>
         </div>
+      </div>-->
+      
+      <!-- Login Form with enhanced security elements -->
+      <form method="POST" class="needs-validation" novalidate>
+        {% csrf_token %}
+        
+        <div class="mb-3 input-group">
+          <span class="input-group-text" style="background-color: #111827; border-color: #4f46e5; color: #94a3b8;">
+            <i class="bi bi-person-fill"></i>
+          </span>
+          <input type="text" name="username" id="username" class="form-control border-primary" 
+                 style="background-color: #111827; color: #e2e8f0; border-color: #4f46e5;" 
+                 placeholder="Username" required autocomplete="username">
+        </div>
+        
+        <div class="mb-3 input-group">
+          <span class="input-group-text" style="background-color: #111827; border-color: #4f46e5; color: #94a3b8;">
+            <i class="bi bi-lock-fill"></i>
+          </span>
+          <input type="password" name="password" id="password" class="form-control border-primary" 
+                 style="background-color: #111827; color: #e2e8f0; border-color: #4f46e5;" 
+                 placeholder="Password" required autocomplete="current-password">
+          <button class="btn" type="button" onclick="togglePassword()" 
+                  style="background-color: #111827; border-color: #4f46e5; color: #94a3b8;">
+            <i class="bi bi-eye-slash" id="togglePasswordIcon"></i>
+          </button>
+        </div>
+        
+        <!-- Two-factor reminder -->
+        <div class="form-check mb-3">
+          <input class="form-check-input" type="checkbox" value="" id="rememberMe" 
+                 style="background-color: #111827; border-color: #4f46e5;">
+          <label class="form-check-label" for="rememberMe" style="color: #94a3b8; font-size: 0.9rem;">
+            Remember this device (not recommended for shared computers)
+          </label>
+        </div>
+        
+        <div class="d-grid mt-4">
+          <button type="submit" class="btn btn-lg" 
+                  style="background-color: #4f46e5; color: #ffffff; font-weight: 500;">
+            <i class="bi bi-shield me-2"></i> Login
+          </button>
+        </div>
+      </form>
+      
+      <!-- Session info -->
+      <div class="text-center mt-3">
+        <small style="color: #64748b; font-size: 0.8rem;">
+          <i class="bi bi-clock-history me-1"></i> Session timeout: 15 minutes
+        </small>
+      </div>
+      
+      <p class="text-center mt-3" style="color: #94a3b8; font-size: 0.9rem;">
+        Don't have an account? <a href="{% url 'register' %}" style="color: #10b981; text-decoration: none;">Register here</a>
+      </p>
+      
+      <!-- Security footer -->
+      <div class="text-center mt-2">
+        <small style="color: #64748b; font-size: 0.75rem;">
+          <i class="bi bi-exclamation-triangle me-1"></i> Multiple failed login attempts will result in account lockout
+        </small>
+      </div>
     </div>
+  </div>
 </div>
+
+<!-- Password toggle script -->
+<script>
+  function togglePassword() {
+    const passwordInput = document.getElementById('password');
+    const toggleIcon = document.getElementById('togglePasswordIcon');
+    
+    if (passwordInput.type === 'password') {
+      passwordInput.type = 'text';
+      toggleIcon.classList.replace('bi-eye-slash', 'bi-eye');
+    } else {
+      passwordInput.type = 'password';
+      toggleIcon.classList.replace('bi-eye', 'bi-eye-slash');
+    }
+  }
+</script>
 {% endblock content %}

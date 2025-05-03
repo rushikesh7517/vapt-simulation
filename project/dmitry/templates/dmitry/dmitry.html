@@ -4,25 +4,25 @@
 
 {% block content %}
 <div class="container mt-5 mb-5">
-    <h2 class="text-center mb-4">Dmitry Scanner</h2>
+    <h2 class="text-center mb-4 text-dark">Dmitry Scanner</h2>
     <div class="row justify-content-center">
         <div class="col-md-10">
-            <form method="post" class="p-4 shadow rounded bg-light">
+            <form method="post" class="p-4 shadow rounded bg-white">
                 {% csrf_token %}
 
                 <div class="mb-3">
-                    <label for="id_target" class="form-label"><strong>Target IP or Domain</strong></label>
+                    <label for="id_target" class="form-label fw-bold text-dark">Target IP or Domain</label>
                     {{ form.target }}
                 </div>
 
                 <div class="mb-3">
-                    <label class="form-label"><strong>Select Dmitry Options</strong></label>
+                    <label class="form-label fw-bold text-dark">Select Dmitry Options</label>
                     <div class="row">
                         {% for checkbox in form.options %}
                             <div class="col-md-6">
-                                <div class="form-check border rounded p-2 mb-2">
+                                <div class="form-check border rounded p-2 mb-2 bg-light">
                                     {{ checkbox.tag }}
-                                    <label class="form-check-label">{{ checkbox.choice_label }}</label>
+                                    <label class="form-check-label text-dark">{{ checkbox.choice_label }}</label>
                                 </div>
                             </div>
                         {% endfor %}
@@ -30,7 +30,7 @@
                 </div>
 
                 <div class="d-grid">
-                    <button type="submit" class="btn btn-success">Run Dmitry Scan</button>
+                    <button type="submit" class="btn btn-success btn-lg">Run Dmitry Scan</button>
                 </div>
             </form>
         </div>

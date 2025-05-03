@@ -1,66 +1,72 @@
 {% extends "base.html" %}
-{% load static %}  {% block title %}Register{% endblock title %}
+{% block title %} Register | VAPT Toolkit {% endblock title %}
 
 {% block content %}
-<div class="container mt-5">
-    <div class="row justify-content-center">
-        <div class="col-12 col-md-8 col-lg-6">
-            <div class="card shadow rounded">
-                <div class="card-body p-4">
-                    <h2 class="text-center mb-4 text-purple">
-                        <i class="fas fa-user-plus"></i> Register
-                    </h2>
+<div class="container d-flex justify-content-center align-items-center" style="min-height: 90vh;">
+  <div class="col-md-6 col-lg-5">
+    <div class="card shadow-lg p-4 animate__animated animate__fadeIn"
+         style="background-color: #0c0e14; border: 1px solid #4f46e5; border-radius: 1rem;">
 
-                    <form method="post">
-                        {% csrf_token %}
-                        {% for message in messages %}
-                            <div class="alert alert-warning">{{ message }}</div>
-                        {% endfor %}
+      <h2 class="text-center mb-3" style="letter-spacing: 2px;">
+        <span style="color: #4f46e5;">Register</span>
+      </h2>
 
-                        <div class="mb-3 input-group">
-                            <span class="input-group-text text-purple">
-                                <i class="fas fa-user"></i>
-                            </span>
-                            <input type="text" name="username" class="form-control" placeholder="Username" required>
-                        </div>
+      <div class="text-center mb-3">
+        <i class="bi bi-person-plus-fill" style="font-size: 2.5rem; color: #4f46e5;"></i>
+      </div>
 
-                        <div class="mb-3 input-group">
-                            <span class="input-group-text text-purple">
-                                <i class="fas fa-envelope"></i>
-                            </span>
-                            <input type="email" name="email" class="form-control" placeholder="Email Address" required>
-                        </div>
+      <form method="POST" class="needs-validation" novalidate>
+        {% csrf_token %}
 
-                        <div class="mb-3 input-group">
-                            <span class="input-group-text text-purple">
-                                <i class="fas fa-lock"></i>
-                            </span>
-                            <input type="password" name="password" class="form-control" placeholder="Password" required>
-                        </div>
-
-                        <div class="mb-3 input-group">
-                            <span class="input-group-text text-purple">
-                                <i class="fas fa-lock"></i>
-                            </span>
-                            <input type="password" name="confirm_password" class="form-control" placeholder="Confirm Password" required>
-                        </div>
-
-                        <div class="d-grid gap-2">
-                            <button type="submit" class="btn btn-purple">
-                                <i class="fas fa-user-check"></i> Register
-                            </button>
-                        </div>
-
-                        <div class="text-center mt-3">
-                            <p>
-                                Already have an account?
-                                <a href="{% url 'login' %}" class="text-purple">Login here</a>
-                            </p>
-                        </div>
-                    </form>
-                </div>
-            </div>
+        <div class="mb-3 input-group">
+          <span class="input-group-text" style="background-color: #111827; border-color: #4f46e5; color: #94a3b8;">
+            <i class="bi bi-person-fill"></i>
+          </span>
+          <input type="text" name="username" class="form-control border-primary"
+                 style="background-color: #111827; color: #e2e8f0; border-color: #4f46e5;"
+                 placeholder="Username" required>
         </div>
+
+        <div class="mb-3 input-group">
+          <span class="input-group-text" style="background-color: #111827; border-color: #4f46e5; color: #94a3b8;">
+            <i class="bi bi-envelope-fill"></i>
+          </span>
+          <input type="email" name="email" class="form-control border-primary"
+                 style="background-color: #111827; color: #e2e8f0; border-color: #4f46e5;"
+                 placeholder="Email" required>
+        </div>
+
+        <div class="mb-3 input-group">
+          <span class="input-group-text" style="background-color: #111827; border-color: #4f46e5; color: #94a3b8;">
+            <i class="bi bi-lock-fill"></i>
+          </span>
+          <input type="password" name="password1" id="password1" class="form-control border-primary"
+                 style="background-color: #111827; color: #e2e8f0; border-color: #4f46e5;"
+                 placeholder="Password" required>
+        </div>
+
+        <div class="mb-3 input-group">
+          <span class="input-group-text" style="background-color: #111827; border-color: #4f46e5; color: #94a3b8;">
+            <i class="bi bi-shield-lock-fill"></i>
+          </span>
+          <input type="password" name="password2" id="password2" class="form-control border-primary"
+                 style="background-color: #111827; color: #e2e8f0; border-color: #4f46e5;"
+                 placeholder="Confirm Password" required>
+        </div>
+
+        <div class="d-grid mt-4">
+          <button type="submit" class="btn btn-lg"
+                  style="background-color: #4f46e5; color: #ffffff; font-weight: 500;">
+            <i class="bi bi-person-check me-2"></i> Register
+          </button>
+        </div>
+      </form>
+
+      <p class="text-center mt-3" style="color: #94a3b8; font-size: 0.9rem;">
+        Already have an account?
+        <a href="{% url 'login' %}" style="color: #10b981; text-decoration: none;">Login here</a>
+      </p>
     </div>
+  </div>
 </div>
 {% endblock content %}

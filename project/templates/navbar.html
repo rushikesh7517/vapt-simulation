@@ -1,41 +1,52 @@
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow-sm">
+<nav class="navbar navbar-expand-lg shadow-sm" style="background-color: #0c0e14; border-bottom: 1px solid #4f46e5;">
 	<div class="container-fluid">
-	  <a class="navbar-brand animate__animated animate__fadeInLeft" href="{% url 'onboarding' %}">VAPT Toolkit</a>
-	  <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-		<span class="navbar-toggler-icon"></span>
+	  <a class="nav-link nav-btn text-light fw-bold" href="{% url 'onboarding' %}" style="color: #4f46e5;">
+		<i class="bi bi-terminal-fill me-1"></i> VAPT Toolkit
+	  </a>
+  
+	  <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+		<span class="navbar-toggler-icon" style="filter: invert(1);"></span>
 	  </button>
   
-	  <div class="collapse navbar-collapse animate__animated animate__fadeInRight" id="navbarNav">
+	  <div class="collapse navbar-collapse" id="navbarNav">
 		<ul class="navbar-nav ms-auto mb-2 mb-lg-0">
   
 		  {% if user.is_authenticated %}
-			<!-- User Logged In Navbar -->
+			<!-- Authenticated User -->
 			<li class="nav-item">
-			  <a class="nav-link nav-btn" href="{% url 'dashboard' %}">Dashboard</a>
+			  <a class="nav-link nav-btn" href="{% url 'dashboard' %}" style="color: #e2e8f0;">
+				<i class="bi bi-speedometer2"></i> Dashboard
+			  </a>
 			</li>
-			
-			<!-- Welcome Username -->
+  
 			<li class="nav-item d-flex align-items-center mx-2">
-			  <span class="text-white small">
+			  <span class="nav-link nav-btn" style="color: #94a3b8;">
 				<i class="bi bi-person-circle"></i> {{ request.user.username|title }}
 			  </span>
 			</li>
   
-			<!-- Logout Button -->
 			<li class="nav-item">
-			  <a class="nav-link nav-btn text-danger" href="{% url 'logout' %}">Logout</a>
+			  <a class="nav-link nav-btn text-danger" href="{% url 'logout' %}">
+				<i class="bi bi-box-arrow-right"></i> Logout
+			  </a>
 			</li>
   
 		  {% else %}
-			<!-- User Not Logged In Navbar -->
+			<!-- Guest User -->
 			<li class="nav-item">
-			  <a class="nav-link nav-btn" href="{% url 'onboarding' %}">Home</a>
+			  <a class="nav-link nav-btn" href="{% url 'onboarding' %}" style="color: #e2e8f0;">
+				<i class="bi bi-house-door-fill"></i> Home
+			  </a>
 			</li>
 			<li class="nav-item">
-			  <a class="nav-link nav-btn" href="{% url 'login' %}">Login</a>
+			  <a class="nav-link nav-btn" href="{% url 'login' %}" style="color: #e2e8f0;">
+				<i class="bi bi-box-arrow-in-right"></i> Login
+			  </a>
 			</li>
 			<li class="nav-item">
-			  <a class="nav-link nav-btn" href="{% url 'register' %}">Register</a>
+			  <a class="nav-link nav-btn" href="{% url 'register' %}" style="color: #10b981;">
+				<i class="bi bi-person-plus-fill"></i> Register
+			  </a>
 			</li>
 		  {% endif %}
   

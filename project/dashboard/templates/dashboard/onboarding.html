@@ -1,66 +1,108 @@
 {% extends "base.html" %}
-
-{% block title %} Welcome to VAPT Toolkit {% endblock title %}
+{% block title %}Welcome | VAPT Toolkit{% endblock title %}
 
 {% block content %}
 
-<!-- Hero Section -->
-<section class="bg-dark text-white text-center p-5 animate__animated animate__fadeIn">
-    <div class="container">
-        <h1 class="display-4 mb-3">Welcome to <span class="text-warning">VAPT Toolkit</span> 🚀</h1>
-        <p class="lead">Your All-in-One Ethical Hacking and Vulnerability Assessment Platform.</p>
-
-        <div class="mt-4">
-            <a href="{% url 'login' %}" class="btn btn-warning btn-lg me-3">Login</a>
-            <a href="{% url 'register' %}" class="btn btn-outline-light btn-lg">Register</a>
-        </div>
+<!-- Custom Navbar (for onboarding only) -->
+<nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #0d1117;">
+  <div class="container-fluid">
+    <a class="navbar-brand fw-bold text-primary" href="#">
+      <i class="bi bi-terminal-fill me-1"></i> VAPT Toolkit
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#onboardingNavbar">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="onboardingNavbar">
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item">
+          <a class="nav-link text-white" href="{% url 'onboarding' %}"><i class="bi bi-house-door-fill me-1"></i>Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link text-white" href="{% url 'login' %}"><i class="bi bi-box-arrow-in-right me-1"></i>Login</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link text-white" href="{% url 'register' %}"><i class="bi bi-person-plus-fill me-1"></i>Register</a>
+        </li>
+      </ul>
     </div>
+  </div>
+</nav>
+
+<!-- Hero Section -->
+<section class="text-white text-center p-5 animate__animated animate__fadeIn" style="background-color: #0d1117;">
+  <div class="container">
+    <h1 class="display-4 fw-bold">
+      <span class="text-primary">VAPT</span> <span class="text-success">Toolkit</span> 🛡️
+    </h1>
+    <p class="lead mt-3">A web-based simulation platform for vulnerability assessment and penetration testing.</p>
+  </div>
 </section>
 
 <!-- About Section -->
-<section class="container py-5 text-center">
-    <h2 class="animate__animated animate__fadeInUp">About VAPT Toolkit</h2>
-    <p class="lead mt-3">VAPT Toolkit allows you to practice professional scanning, information gathering, and attack simulation techniques safely. Built specially for cybersecurity students and ethical hackers.</p>
+<section class="container text-center py-5">
+  <h2 class="text-light animate__animated animate__fadeInUp">What is VAPT Toolkit?</h2>
+  <p class="lead text-secondary mt-3">
+    The VAPT Toolkit helps cybersecurity students and ethical hackers practice real-world scanning, brute force, and OSINT tools in a safe, controlled, GUI environment.
+  </p>
 </section>
 
-<!-- Features Section -->
-<section class="bg-light py-5">
-    <div class="container">
-        <h2 class="text-center animate__animated animate__fadeInUp">What You Can Do</h2>
+<!-- Tools Overview Section -->
+<section class="bg-dark py-5">
+  <div class="container">
+    <h2 class="text-center text-white animate__animated animate__fadeInUp">Included Tools</h2>
+    <div class="row g-4 mt-4 text-center">
 
-        <div class="row g-4 mt-4 text-center">
-            <div class="col-md-3 animate__animated animate__zoomIn">
-                <div class="card shadow-sm p-3">
-                    <h5 class="card-title">Nmap Scanner</h5>
-                    <p>Network port scanning and service detection.</p>
-                </div>
-            </div>
-            <div class="col-md-3 animate__animated animate__zoomIn">
-                <div class="card shadow-sm p-3">
-                    <h5 class="card-title">Dmitry Footprinting</h5>
-                    <p>Domain information and subdomain gathering.</p>
-                </div>
-            </div>
-            <div class="col-md-3 animate__animated animate__zoomIn">
-                <div class="card shadow-sm p-3">
-                    <h5 class="card-title">Brute Force Attack</h5>
-                    <p>SSH Brute Force simulation using uploaded wordlists.</p>
-                </div>
-            </div>
-            <div class="col-md-3 animate__animated animate__zoomIn">
-                <div class="card shadow-sm p-3">
-                    <h5 class="card-title">theHarvester OSINT</h5>
-                    <p>Email and domain harvesting from public sources.</p>
-                </div>
-            </div>
+      <!-- Nmap -->
+      <div class="col-md-3">
+        <div class="card h-100 shadow-sm text-white bg-black border-0">
+          <div class="card-body">
+            <i class="bi bi-diagram-3-fill display-4 text-primary mb-3"></i>
+            <h5 class="card-title">Nmap Scanner</h5>
+            <p class="card-text small">Scan open ports and services.</p>
+          </div>
         </div>
+      </div>
+
+      <!-- Dmitry -->
+      <div class="col-md-3">
+        <div class="card h-100 shadow-sm text-white bg-black border-0">
+          <div class="card-body">
+            <i class="bi bi-search display-4 text-success mb-3"></i>
+            <h5 class="card-title">Dmitry</h5>
+            <p class="card-text small">Gather domain and email info.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Brute Force -->
+      <div class="col-md-3">
+        <div class="card h-100 shadow-sm text-white bg-black border-0">
+          <div class="card-body">
+            <i class="bi bi-shield-lock-fill display-4 text-danger mb-3"></i>
+            <h5 class="card-title">Brute Force</h5>
+            <p class="card-text small">Simulate SSH brute force attacks.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- theHarvester -->
+      <div class="col-md-3">
+        <div class="card h-100 shadow-sm text-white bg-black border-0">
+          <div class="card-body">
+            <i class="bi bi-globe2 display-4 text-info mb-3"></i>
+            <h5 class="card-title">theHarvester</h5>
+            <p class="card-text small">Collect OSINT data from public sources.</p>
+          </div>
+        </div>
+      </div>
+
     </div>
+  </div>
 </section>
 
-<!-- Final Call to Action -->
-<section class="container text-center py-5 animate__animated animate__fadeInUp">
-    <h2>Start Your Ethical Hacking Journey Today!</h2>
-    <a href="{% url 'login' %}" class="btn btn-success btn-lg mt-4">Login Now</a>
+<!-- Footer CTA -->
+<section class="text-center text-light py-5">
+  <p class="lead">Use the <strong>navbar</strong> above to <span class="text-info">Login</span> or <span class="text-success">Register</span> to begin.</p>
 </section>
 
 {% endblock content %}

@@ -6,25 +6,38 @@
 <div class="container mt-5 mb-5">
     <div class="row justify-content-center">
         <div class="col-lg-10">
-            <div class="card shadow-sm">
+            <div class="card shadow">
                 <div class="card-header bg-danger text-white">
-                    <h4 class="mb-0">Brute Force Result for: {{ target_ip }}</h4>
-                    <small class="text-light">Username: {{ username }}</small>
+                    <h4 class="mb-0 fw-bold">Brute Force Results for IP: {{ target_ip }}</h4>
                 </div>
-                <div class="card-body bg-light">
+                
+                {% if success %}
                     {% if matched %}
-                        <h5 class="text-success">✅ Valid credentials found:</h5>
-                        <pre class="border p-2 bg-white rounded">{{ matched }}</pre>
+                    <div class="alert alert-success m-3">
+                        <h5>Found Credentials:</h5>
+                        <pre class="mb-0">{{ matched }}</pre>
+                    </div>
                     {% else %}
-                        <h5 class="text-warning">⚠️ No valid credentials found.</h5>
+                    <div class="alert alert-warning m-3">
+                        <h5>No credentials found</h5>
+                    </div>
                     {% endif %}
-                    <hr>
-                    <h6 class="text-muted">Full Output:</h6>
-                    <pre id="scanOutput" style="white-space: pre-wrap;">{{ result }}</pre>
+                {% endif %}
+                
+                {% if error %}
+                <div class="alert alert-danger m-3">
+                    <h5>Error:</h5>
+                    <p>{{ error }}</p>
                 </div>
-                <div class="card-footer d-flex justify-content-between align-items-center">
-                    <a href="{% url 'bruteforce' %}" class="btn btn-outline-secondary">← Back to Brute Force</a>
-                    <button class="btn btn-danger" onclick="downloadResult()">Download Result</button>
+                {% endif %}
+                
+                <div class="card-body bg-white">
+                    <h5>Full Output:</h5>
+                    <pre id="scanOutput" style="white-space: pre-wrap; color: #212529; font-size: 1rem;">{{ result }}</pre>
+                </div>
+                <div class="card-footer d-flex justify-content-between align-items-center bg-light">
+                    <a href="{% url 'brute_force' %}" class="btn btn-outline-danger btn-lg">← Back to Brute Force</a>
+                    <button class="btn btn-danger btn-lg" onclick="downloadResult()">Download Result</button>
                 </div>
             </div>
         </div>
@@ -33,11 +46,22 @@
 
 <script>
     function downloadResult() {
-        const scanText = document.getElementById("scanOutput").innerText;
-        const filename = prompt("Enter file name (without extension):", "brute_result");
+        // Create formatted content for download
+        let content = `Brute Force Scan Results\n`;
+        content += `Target IP: {{ target_ip }}\n`;
+        content += `Date: ${new Date().toLocaleString()}\n\n`;
+        
+        {% if matched %}
+        content += `FOUND CREDENTIALS:\n{{ matched }}\n\n`;
+        {% endif %}
+        
+        content += `FULL OUTPUT:\n`;
+        content += document.getElementById("scanOutput").innerText;
+        
+        const filename = prompt("Enter file name (without extension):", "bruteforce_{{ target_ip }}");
         if (!filename) return;
 
-        const blob = new Blob([scanText], { type: "text/plain" });
+        const blob = new Blob([content], { type: "text/plain" });
         const url = URL.createObjectURL(blob);
 
         const a = document.createElement("a");
