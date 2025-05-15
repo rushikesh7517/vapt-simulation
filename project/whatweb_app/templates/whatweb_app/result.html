@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+{% block title %}WhatWeb Scan Result{% endblock %}
+
+{% block content %}
+<div class="container mt-5" id="report">
+    <div class="bg-dark text-light p-4 rounded border border-info">
+        <h2 class="text-info mb-3">🧠 WhatWeb Summary</h2>
+        <ul class="list-group list-group-flush">
+            {% for key, value in summary.items %}
+                <li class="list-group-item bg-dark text-light d-flex justify-content-between">
+                    <strong>{{ key }}:</strong>
+                    <span>{{ value }}</span>
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
+
+    <div class="card bg-dark text-light mt-4 p-3 border border-secondary">
+        <h5 class="text-warning">📄 Raw Output</h5>
+        <pre style="white-space: pre-wrap;">{{ result }}</pre>
+        <div class="text-center mt-3">
+            <button class="btn btn-success" onclick="downloadPDF()">⬇ Export PDF</button>
+            <a href="{% url 'whatweb_scan' %}" class="btn btn-secondary ms-2">← New Scan</a>
+        </div>
+    </div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.2/html2pdf.bundle.min.js"></script>
+<script>
+function downloadPDF() {
+    const element = document.getElementById("report");
+    const opt = {
+        margin: 0.5,
+        filename: 'whatweb_result.pdf',
+        image: { type: 'jpeg', quality: 0.98 },
+        html2canvas: { scale: 2 },
+        jsPDF: { unit: 'in', format: 'letter', orientation: 'portrait' }
+    };
+    html2pdf().set(opt).from(element).save();
+}
+</script>
+{% endblock %}

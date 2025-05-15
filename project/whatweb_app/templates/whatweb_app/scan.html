@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+{% block title %}WhatWeb Scanner{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <h2 class="text-center mb-4">🔍 WhatWeb Scanner</h2>
+
+    <form method="POST" class="p-4 rounded shadow" style="background-color: #1c1c1e;">
+        {% csrf_token %}
+        <div class="mb-3">
+            <label class="form-label">Target URL</label>
+            <input type="text" name="target" class="form-control" required placeholder="https://example.com" style="background-color: #2a2a2e; color: #fff;">
+        </div>
+        <button type="submit" class="btn btn-danger w-100">🚀 Start Scan</button>
+    </form>
+
+    {% if result %}
+    <div class="card bg-dark text-light mt-4 p-3 border border-info">
+        <h5 class="text-info">Scan Result for {{ target }}</h5>
+        <pre style="white-space: pre-wrap;">{{ result }}</pre>
+        <button class="btn btn-outline-info mt-2" onclick="downloadResult()">⬇ Download</button>
+    </div>
+    {% endif %}
+</div>
+
+<script>
+function downloadResult() {
+    const text = document.querySelector('pre').innerText;
+    const filename = prompt("Enter filename:", "whatweb_result");
+    if (!filename) return;
+
+    const blob = new Blob([text], { type: 'text/plain' });
+    const link = document.createElement('a');
+    link.href = URL.createObjectURL(blob);
+    link.download = filename + ".txt";
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+}
+</script>
+{% endblock %}

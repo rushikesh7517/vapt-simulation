@@ -4,27 +4,33 @@
 
 {% block content %}
 <div class="container mt-5 mb-5">
-    <h2 class="text-center mb-4">Brute Force Attack Simulator</h2>
-    <div class="row justify-content-center">
-        <div class="col-md-10">
-            <form method="post" enctype="multipart/form-data" class="p-4 shadow rounded bg-light">
-                {% csrf_token %}
-                <div class="mb-3">
-                    <label for="id_target_ip" class="form-label">Target IP</label>
-                    {{ form.target_ip }}
-                </div>
-                <div class="mb-3">
-                    <label for="id_username_wordlist" class="form-label">Upload Username Wordlist</label>
-                    {{ form.username_wordlist }}
-                </div>
-                <div class="mb-3">
-                    <label for="id_password_wordlist" class="form-label">Upload Password Wordlist</label>
-                    {{ form.password_wordlist }}
-                </div>
-                <div class="d-grid">
-                    <button type="submit" class="btn btn-danger">Start Brute Force</button>
-                </div>
-            </form>
+    <div class="bg-dark text-light p-4 rounded shadow-lg">
+        <h2 class="text-center mb-4 text-info">
+            <i class="bi bi-shield-lock-fill me-2"></i>Brute Force Attack Simulator
+        </h2>
+        <div class="row justify-content-center">
+            <div class="col-md-10">
+                <form method="post" enctype="multipart/form-data" class="bg-black p-4 rounded shadow">
+                    {% csrf_token %}
+                    <div class="mb-3">
+                        <label for="id_target_ip" class="form-label text-light">Target IP</label>
+                        {{ form.target_ip }}
+                    </div>
+                    <div class="mb-3">
+                        <label for="id_username_wordlist" class="form-label text-light">Upload Username Wordlist</label>
+                        {{ form.username_wordlist }}
+                    </div>
+                    <div class="mb-3">
+                        <label for="id_password_wordlist" class="form-label text-light">Upload Password Wordlist</label>
+                        {{ form.password_wordlist }}
+                    </div>
+                    <div class="d-grid mt-4">
+                        <button type="submit" class="btn btn-danger btn-lg">
+                            <i class="bi bi-lightning-charge-fill me-1"></i>Start Brute Force
+                        </button>
+                    </div>
+                </form>
+            </div>
         </div>
     </div>
 </div>

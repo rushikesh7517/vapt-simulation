@@ -3,16 +3,24 @@
 {% block title %} Harvest Result {% endblock title %}
 
 {% block content %}
-<div class="container mt-5">
-    <h2 class="text-center">Results for {{ target }} via {{ source|title }}</h2>
+<div class="container mt-5" style="color: #fff;">
+    <h2 class="text-center" style="color: #00f2ff;">Results for {{ target }} via {{ source|title }}</h2>
 
-    <div class="card shadow-sm p-4 bg-light mt-4">
-        <pre>{{ result }}</pre>
+    <div class="card shadow-sm p-4 mt-4" style="background-color: #1a1a1a; border: 1px solid #00f2ff;">
+        <pre style="color: #00ffea; font-family: 'Courier New', Courier, monospace; white-space: pre-wrap;">{{ result }}</pre>
     </div>
 
     <div class="d-flex justify-content-between mt-3">
-        <a href="{% url 'harvester_scan' %}" class="btn btn-secondary">← Back</a>
-        <button class="btn btn-success" onclick="downloadResult()">Download Result</button>
+        <a href="{% url 'harvester_scan' %}" 
+           class="btn" 
+           style="background-color: #444; color: white; border: none; font-weight: bold;">
+            ← Back
+        </a>
+        <button class="btn" 
+                onclick="downloadResult()" 
+                style="background-color: #ff003c; color: white; font-weight: bold; border: none;">
+            ⬇ Download Result
+        </button>
     </div>
 </div>
 

@@ -3,36 +3,45 @@
 {% block title %} theHarvester Scanner {% endblock title %}
 
 {% block content %}
-<div class="container mt-5 mb-5">
-    <h2 class="text-center mb-4">theHarvester Scanner</h2>
+<div class="flex justify-center mt-10">
+    <div class="bg-black p-8 rounded-lg border border-cyan-500 w-full max-w-xl">
+        <h2 class="text-center text-cyan-400 text-2xl font-semibold mb-6">theHarvester Scanner</h2>
 
-    <form method="post" class="p-4 shadow rounded bg-light">
-        {% csrf_token %}
-        
-        <div class="mb-3">
-            <label for="target" class="form-label">Target Domain/IP</label>
-            <input type="text" class="form-control" name="target" required placeholder="example.com">
-        </div>
+        <form method="post" class="space-y-5">
+            {% csrf_token %}
 
-        <div class="mb-3">
-            <label for="source" class="form-label">Select Source</label>
-            <select class="form-select" name="source" required>
-                <option value="google">Google</option>
-                <option value="bing">Bing</option>
-                <option value="linkedin">LinkedIn</option>
-                <option value="crtsh">crt.sh</option>
-                <option value="yahoo">Yahoo</option>
-            </select>
-        </div>
+            <div>
+                <label for="target" class="text-cyan-300 block mb-1">Target Domain/IP</label>
+                <input type="text" name="target" required placeholder="example.com"
+                    class="w-full bg-gray-900 border border-cyan-400 text-white px-3 py-2 rounded">
+            </div>
 
-        <div class="mb-3">
-            <label for="limit" class="form-label">Result Limit</label>
-            <input type="number" class="form-control" name="limit" value="100" min="1" max="500">
-        </div>
+            <div>
+                <label for="source" class="text-cyan-300 block mb-1">Select Source</label>
+                <select name="source" required
+                    class="w-full bg-gray-900 border border-cyan-400 text-white px-3 py-2 rounded">
+                    <option value="bing">Bing</option>
+                    <option value="brave">Brave</option>
+                    <option value="duckduckgo">DuckDuckGo</option>
+                    <option value="crtsh">crt.sh</option>
+                    <option value="yahoo">Yahoo</option>
+                    <option value="anubis">Anubis</option>
+                </select>
+            </div>
 
-        <div class="d-grid">
-            <button type="submit" class="btn btn-success">Start Harvesting</button>
-        </div>
-    </form>
+            <div>
+                <label for="limit" class="text-cyan-300 block mb-1">Result Limit</label>
+                <input type="number" name="limit" value="100" min="1" max="500"
+                    class="w-full bg-gray-900 border border-cyan-400 text-white px-3 py-2 rounded">
+            </div>
+
+            <div>
+                <button type="submit"
+                    class="w-full bg-red-600 hover:bg-red-700 text-white py-2 rounded font-semibold">
+                    ⚡ Start Harvesting
+                </button>
+            </div>
+        </form>
+    </div>
 </div>
 {% endblock content %}

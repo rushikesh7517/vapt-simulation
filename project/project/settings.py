@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'dashboard',
     'accounts',
     'theharvester',
+    'whatweb_app',
 ]
 
 MIDDLEWARE = [

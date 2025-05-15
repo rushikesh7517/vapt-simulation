@@ -27,5 +27,7 @@ urlpatterns = [
     path('dmitry/', include('dmitry.urls')),      # Dmitry Scanner
     path('bruteforce/', include('bruteforce.urls')), # Brute Force Scanner
     path('theharvester/', include('theharvester.urls')), # theHarvester
+    path('whatweb/', include('whatweb_app.urls')),  #whatweb_app
+
 ]
 

@@ -5,9 +5,9 @@ from django.contrib import messages
 
 def register_view(request):
     if request.method == 'POST':
-        username = request.POST['username']
-        password = request.POST['password']
-        confirm_password = request.POST['confirm_password']
+        username = request.POST.get('username')
+        password = request.POST.get('password1')
+        confirm_password = request.POST.get('password2')
 
         if password == confirm_password:
             if User.objects.filter(username=username).exists():
@@ -20,6 +20,7 @@ def register_view(request):
             messages.error(request, "Passwords do not match")
 
     return render(request, 'accounts/register.html')
+
 
 def login_view(request):
     if request.method == 'POST':
